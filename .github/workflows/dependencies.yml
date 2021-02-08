@@ -1,0 +1,33 @@
+# This workflow will check daily for dependency updates on main branch.
+
+name: Dependencies
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup Deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: nightly
+
+      - name: Update dependencies
+        run: deno install -A -f -n udd https://deno.land/x/udd@0.4.1/main.ts && udd deps.ts
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.CREATE_PR_TOKEN }}
+          commit-message: Update dependencies
+          title: Update dependencies
+          body: |
+            chore: dependency updates
+          branch: update-dependencies
