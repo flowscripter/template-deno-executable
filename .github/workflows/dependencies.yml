@@ -7,7 +7,7 @@ on:
     - cron:  '*/5 * * * *'
 
 jobs:
-  test:
+  update-dep:
     runs-on: ubuntu-latest
 
     steps:
