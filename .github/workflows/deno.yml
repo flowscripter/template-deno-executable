@@ -16,7 +16,7 @@ jobs:
         os: [macOS-latest, windows-latest, ubuntu-latest]
 
     steps:
-      - name: Checkout source
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Setup Deno
