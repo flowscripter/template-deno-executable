@@ -25,8 +25,8 @@ jobs:
           deno-version: ${{ matrix.deno }} # tests across multiple Deno versions
 
       - name: Lint source
-        if: matrix.deno == v1.x && matrix.os == ubuntu-latest  # only run on a single matrix combination
-        run: deno lint --check
+        if: matrix.deno == 'v1.x' && matrix.os == 'ubuntu-latest'  # only run on a single matrix combination
+        run: deno fmt --check
 
       - name: Cache dependencies
         run: deno cache deps.ts
