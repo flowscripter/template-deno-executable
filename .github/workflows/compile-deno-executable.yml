@@ -1,0 +1,18 @@
+name: compile-deno-executable
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Setup Deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: v1.x
+      - name: Compile Deno
+        uses: flowscripter/.github/actions/compile-deno-executable
+        with:
+          name: deno-template
