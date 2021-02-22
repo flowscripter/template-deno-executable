@@ -15,7 +15,7 @@ jobs:
         with:
           deno-version: v1.x
       - name: Compile Deno
-        uses: flowscripter/.github/actions/compile-deno-executable
+        uses: flowscripter/.github/actions/compile-deno-executable@v1.0
         with:
           name: deno-template
       - name: Setup Node.js
@@ -23,6 +23,6 @@ jobs:
         with:
           node-version: 13
       - name: Release Deno
-        uses: flowscripter/.github/actions/release-deno-executable
+        uses: flowscripter/.github/actions/release-deno-executable@v1.0
         with:
           name: deno-template
