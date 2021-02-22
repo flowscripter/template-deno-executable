@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  lint:
+  compile:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
