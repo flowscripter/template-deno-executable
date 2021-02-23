@@ -42,4 +42,4 @@ jobs:
       - name: Release Deno
         uses: flowscripter/.github/actions/release-deno-executable@v1.2
         with:
-          name: deno-template
+          name: template-deno-executable
