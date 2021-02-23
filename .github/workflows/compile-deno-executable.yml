@@ -15,4 +15,4 @@ jobs:
       - name: Compile Deno
         uses: flowscripter/.github/actions/compile-deno-executable@v1.2
         with:
-          name: deno-template
+          name: template-deno-executable

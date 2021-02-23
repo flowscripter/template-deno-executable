@@ -1,3 +1,3 @@
 import { log } from "../deps.ts";
 
-log.info("Hello world");
+log.info("Hello");
