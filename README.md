@@ -1,10 +1,10 @@
-# deno-template
+# template-deno-application
 
-[![ci](https://github.com/flowscripter/deno-template/workflows/Deno/badge.svg)](https://github.com/flowscripter/deno-template)
-![dependencies](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fupdates%2Fx%deno-template%2Fmod.ts)
-[![version](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fdeno-template%2Fmod.ts)](https://doc.deno.land/https/deno.land/x/deno-template/mod.ts)
+[![ci](https://github.com/flowscripter/template-deno-application/workflows/release-deno-executable/badge.svg)](https://github.com/flowscripter/template-deno-application)
+![dependencies](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fupdates%2Fx%template-deno-application%2Fmod.ts)
+[![version](https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Ftemplate-deno-application%2Fmod.ts)](https://doc.deno.land/https/deno.land/x/template-deno-application/mod.ts)
 
-> Template Deno application project.
+> Project template for a Deno application.
 
 ## Usage
 
