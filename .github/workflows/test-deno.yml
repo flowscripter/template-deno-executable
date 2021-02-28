@@ -3,6 +3,15 @@ on:
   pull_request:
     branches: [main]
 jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Setup Deno
+        uses: denolib/setup-deno@v2
+      - name: Generate docs
+        run: deno doc mod.ts
   test:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -19,4 +28,4 @@ jobs:
       - name: Cache dependencies
         run: deno cache deps.ts
       - name: Run tests
-        run: deno test -A --unstable --coverage
+        run: deno test -A --unstable

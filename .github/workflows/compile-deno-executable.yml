@@ -13,6 +13,6 @@ jobs:
         with:
           deno-version: v1.x
       - name: Compile Deno
-        uses: flowscripter/.github/actions/compile-deno-executable@v1.2
+        uses: flowscripter/.github/actions/compile-deno-executable@v1.6
         with:
           name: template-deno-executable
