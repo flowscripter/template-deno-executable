@@ -1,3 +1,8 @@
 import { log } from "../deps.ts";
 
-log.info("Hello world");
+/**
+ * Logs out `Hello`.
+ */
+export function hello(): void {
+  log.info("Hello");
+}
