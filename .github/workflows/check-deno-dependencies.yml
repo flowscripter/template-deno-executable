@@ -19,7 +19,7 @@ jobs:
         with:
           token: ${{ secrets.CREATE_PR_TOKEN }}
           commit-message: 'chore: update dependencies'
-          title: Update dependencies
+          title: 'chore: update dependencies'
           body: |
-            chore: dependency updates
+            chore: update dependencies
           branch: update-dependencies
