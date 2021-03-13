@@ -13,7 +13,7 @@ jobs:
         with:
           deno-version: v1.x
       - name: Compile Deno
-        uses: flowscripter/.github/actions/compile-deno-executable@v1.12
+        uses: flowscripter/.github/actions/compile-deno-executable@v1.13
         with:
           name: template-deno-executable
           ouput-path: ${{ runner.temp }}
