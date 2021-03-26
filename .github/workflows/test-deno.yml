@@ -25,7 +25,5 @@ jobs:
         uses: denolib/setup-deno@v2
         with:
           deno-version: ${{ matrix.deno }}
-      - name: Cache dependencies
-        run: deno cache deps.ts
       - name: Run tests
         run: deno test -A --unstable
