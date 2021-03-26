@@ -1,0 +1,27 @@
+name: test-deno-executable
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  compile:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-latest, windows-latest, ubuntu-latest]
+        deno: ["v1.x", "nightly"]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Setup Deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{ matrix.deno }}
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Test Deno Executable
+        uses: flowscripter/.github/actions/test-deno-executable@v1.17
+        with:
+          name: template-deno-executable
+          binaries-base-path: ${{ runner.temp }}
