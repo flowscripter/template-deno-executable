@@ -21,7 +21,12 @@ jobs:
         with:
           python-version: 3.8
       - name: Test Deno Executable
-        uses: flowscripter/.github/actions/test-deno-executable@v1.17
+        if: matrix.os == 'windows-latest'
+        uses: flowscripter/.github/actions/test-deno-executable@v1.18
         with:
-          name: template-deno-executable
-          binaries-base-path: ${{ runner.temp }}
+          binary-path: ${{ runner.temp }}\template-deno-executable
+      - name: Test Deno Executable
+        if: matrix.os != 'windows-latest'
+        uses: flowscripter/.github/actions/test-deno-executable@v1.18
+        with:
+          binary-path: ${{ runner.temp }}/template-deno-executable
