@@ -1,5 +1,7 @@
 name: analyse-javascript-code
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
 jobs:

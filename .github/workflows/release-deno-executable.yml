@@ -7,42 +7,68 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        deno: ["v1.x", "nightly"]
         os: [macOS-latest, windows-latest, ubuntu-latest]
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
       - name: Setup Deno
-        uses: denolib/setup-deno@v2
+        uses: denoland/setup-deno@v1
         with:
-          deno-version: ${{ matrix.deno }}
-      - name: Cache dependencies
-        run: deno cache deps.ts
+          deno-version: v1.x
       - name: Run tests
-        run: deno test -A --unstable
-  release:
-    runs-on: ubuntu-latest
+        run: deno test -A --unstable --coverage=coverage
+      - name: Create coverage report
+        run: deno coverage --unstable ./coverage --lcov > ./coverage/coverage.lcov
+      - name: Publish coverage report
+        uses: codecov/codecov-action@v2
+        with:
+          file: ./coverage/coverage.lcov
+  test-deno-executable:
+    runs-on: ${{ matrix.os }}
     needs:
       - test
+    strategy:
+      matrix:
+        os: [macOS-latest, windows-latest, ubuntu-latest]
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
       - name: Setup Deno
-        uses: denolib/setup-deno@v2
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Test Executable
+        uses: flowscripter/.github/actions/test-deno-executable@v1
+        with:
+          name: template-deno-executable
+          binaries-base-path: ${{ runner.temp }}
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - test-deno-executable
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
       - name: Compile Deno
-        uses: flowscripter/.github/actions/compile-deno-executable@v1.16
+        uses: flowscripter/.github/actions/compile-deno-executable@v1
         with:
           name: template-deno-executable
-          output-path: ${{ runner.temp }}
+          binaries-base-path: ${{ runner.temp }}
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 13
       - name: Release Deno
-        uses: flowscripter/.github/actions/release-deno-executable@v1.16
+        uses: flowscripter/.github/actions/release-deno-executable@v1
         with:
           name: template-deno-executable
-          output-path: ${{ runner.temp }}
+          binaries-base-path: ${{ runner.temp }}
           token: ${{ secrets.GITHUB_TOKEN }}

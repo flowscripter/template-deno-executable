@@ -1,0 +1,31 @@
+name: test-deno-executable
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  compile:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-latest, windows-latest, ubuntu-latest]
+    steps:
+      - name: Windows Separator
+        if: matrix.os == 'windows-latest'
+        run: echo "os_separator=\" >> $GITHUB_ENV
+      - name: Non-Windows Separator
+        if: matrix.os != 'windows-latest'
+        run: echo "os_separator=/" >> $GITHUB_ENV
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Test Deno Executable
+        uses: flowscripter/.github/actions/test-deno-executable@v1
+        with:
+          binary-path: ${{ runner.temp }}${{ env.os_separator }}template-deno-executable

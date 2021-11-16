@@ -9,11 +9,14 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v2
       - name: Setup Deno
-        uses: denolib/setup-deno@v2
+        uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
       - name: Update dependencies
-        run: deno install -A -f -n udd https://deno.land/x/udd@0.4.1/main.ts && udd deps.ts
+        run: |
+          deno install -A -f -n udd https://deno.land/x/udd@0.5.0/main.ts
+          udd deps.ts --test="deno test -A --unstable"
+          udd tests/test_deps.ts --test="deno test -A --unstable"
       - name: Create PR
         uses: peter-evans/create-pull-request@v3
         with:
