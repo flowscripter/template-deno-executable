@@ -23,7 +23,7 @@ Test: `deno test -A --unstable`
 
 Lint: `deno fmt`
 
-Compile: `deno compile --lite --unstable mod.ts`
+Compile: `deno compile --unstable mod.ts`
 
 ## Documentation
 
