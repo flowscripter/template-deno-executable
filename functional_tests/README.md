@@ -4,7 +4,7 @@
 
 Ensure the executable is built:
 
-    deno compile --lite --unstable --output /tmp/template-deno-executable ../mod.ts
+    deno compile --unstable --output /tmp/template-deno-executable ../mod.ts
 
 Install requirements:
 

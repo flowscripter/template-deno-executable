@@ -23,7 +23,11 @@ Test: `deno test -A --unstable`
 
 Lint: `deno fmt`
 
-Compile: `deno compile --lite --unstable mod.ts`
+Compile: `deno compile --unstable mod.ts`
+
+## Functional Tests
+
+Refer to [functional_tests/README.md](functional_tests/README.md)
 
 ## Documentation
 
