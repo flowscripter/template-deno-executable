@@ -1,4 +1,5 @@
-import pexpect
+from pexpect.popen_spawn import PopenSpawn
+from pexpect import EOF
 
 
 class PExpectWrapper:
@@ -11,7 +12,7 @@ class PExpectWrapper:
     def start(self):
         assert self.child is None
 
-        self.child = pexpect.spawn(self.executable, encoding='utf-8')
+        self.child = PopenSpawn(self.executable, encoding='utf-8')
 
     def expect(self, message):
         assert self.child is not None
@@ -26,14 +27,13 @@ class PExpectWrapper:
     def expect_eof(self):
         assert self.child is not None
 
-        self.child.expect(pexpect.EOF)
+        self.child.expect(EOF)
 
     def complete(self):
         assert self.child is not None
 
-        self.child.close()
+        exit_status = self.child.wait()
 
-        self.output = self.child.before.split('\r\n')
+        self.output = self.child.before.split('\n')
 
-        assert self.child.signalstatus is None
-        return self.child.exitstatus
+        return exit_status
