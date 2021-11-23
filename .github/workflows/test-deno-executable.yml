@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  compile:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -21,6 +21,10 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
+      - name: Compile Deno
+        uses: flowscripter/.github/actions/compile-deno-executable@v1
+        with:
+          binary-path: ${{ runner.temp }}${{ env.os_separator }}template-deno-executable
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
