@@ -25,6 +25,10 @@ Lint: `deno fmt`
 
 Compile: `deno compile --unstable mod.ts`
 
+## Functional Tests
+
+Refer to [functional_tests/README.md](functional_tests/README.md)
+
 ## Documentation
 
 ### Overview
