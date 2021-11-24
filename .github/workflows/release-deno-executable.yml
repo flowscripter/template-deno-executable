@@ -9,20 +9,8 @@ jobs:
       matrix:
         os: [macOS-latest, windows-latest, ubuntu-latest]
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v2
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - name: Run tests
-        run: deno test -A --unstable --coverage=coverage
-      - name: Create coverage report
-        run: deno coverage --unstable ./coverage --lcov > ./coverage/coverage.lcov
-      - name: Publish coverage report
-        uses: codecov/codecov-action@v2
-        with:
-          file: ./coverage/coverage.lcov
+      - name: Test Deno
+        uses: flowscripter/.github/actions/run-deno-tests@v1
   test-deno-executable:
     runs-on: ${{ matrix.os }}
     needs:
@@ -31,16 +19,6 @@ jobs:
       matrix:
         os: [macOS-latest, windows-latest, ubuntu-latest]
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v2
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
       - name: Test Executable
         uses: flowscripter/.github/actions/test-deno-executable@v1
   release:
@@ -48,20 +26,10 @@ jobs:
     needs:
       - test-deno-executable
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v2
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
       - name: Cross-Compile Deno
         uses: flowscripter/.github/actions/cross-compile-deno-executable@v1
         with:
           name: template-deno-executable
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 13
       - name: Release Deno
         uses: flowscripter/.github/actions/release-deno-executable@v1
         with:

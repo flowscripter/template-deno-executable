@@ -9,15 +9,5 @@ jobs:
       matrix:
         os: [macOS-latest, windows-latest, ubuntu-latest]
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v2
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
       - name: Test Deno Executable
         uses: flowscripter/.github/actions/test-deno-executable@v1
