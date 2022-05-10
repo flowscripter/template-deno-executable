@@ -1,10 +1,10 @@
 import { log } from "../deps.ts";
-import { lib } from "../deps.ts";
+import { denoLib } from "../deps.ts";
 
 /**
- * Logs out `Hello` and `World`.
+ * Logs out some greetings.
  */
 export function hello(): void {
   log.info("Hello");
-  lib.world();
+  denoLib.world();
 }

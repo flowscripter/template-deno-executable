@@ -18,6 +18,7 @@ jobs:
           udd deps.ts --test="deno test -A --unstable"
           udd tests/test_deps.ts --test="deno test -A --unstable"
       - name: Create PR
+        id: create-pr
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.CREATE_PR_TOKEN }}
@@ -26,3 +27,10 @@ jobs:
           body: |
             chore: update dependencies
           branch: update-dependencies
+      - name: Enable Pull Request Automerge
+        if: steps.create-pr.outputs.pull-request-operation == 'created'
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{ secrets.CREATE_PR_TOKEN }}
+          pull-request-number: ${{ steps.create-pr.outputs.pull-request-number }}
+          merge-method: squash
