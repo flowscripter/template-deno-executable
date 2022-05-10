@@ -34,4 +34,4 @@ jobs:
         uses: flowscripter/.github/actions/release-deno-executable@v1
         with:
           name: template-deno-executable
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
