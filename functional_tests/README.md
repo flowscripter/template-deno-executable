@@ -4,7 +4,7 @@
 
 Ensure the executable is built:
 
-    deno compile --unstable --output /tmp/template-deno-executable ../mod.ts
+    deno compile --unstable --allow-env --allow-read --allow-write --allow-ffi --allow-net --output /tmp/template-deno-executable ../mod.ts
 
 Install requirements:
 
@@ -16,3 +16,7 @@ Run the functional tests:
 
     export EXECUTABLE=/tmp/template-deno-executable
     behave
+
+To run with logging output from the test steps (this is the best set of arguments I can find):
+
+    behave --no-logcapture --no-color --logging-level=DEBUG 

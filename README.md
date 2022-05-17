@@ -18,13 +18,13 @@
 
 ## Development
 
-Run: `deno run mod.ts`
+Run: `deno run --unstable --allow-env --allow-read --allow-write --allow-ffi --allow-net mod.ts`
 
 Test: `deno test -A --unstable`
 
 Lint: `deno fmt`
 
-Compile: `deno compile --unstable mod.ts`
+Compile: `deno compile --unstable --allow-env --allow-read --allow-write --allow-ffi --allow-net mod.ts`
 
 ## Functional Tests
 
