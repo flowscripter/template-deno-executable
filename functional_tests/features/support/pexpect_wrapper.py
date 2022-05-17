@@ -19,10 +19,10 @@ class PExpectWrapper:
 
         output = ''
         while output == '':
-            assert len(self.output) > 0
+            assert len(self.output) > 0, 'expected an output line'
             output = self.output.pop(0)
 
-        assert message in output
+        assert message in output, 'expected {} in {}'.format(message, output)
 
     def expect_eof(self):
         assert self.child is not None
