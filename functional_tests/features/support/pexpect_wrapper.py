@@ -1,5 +1,7 @@
 from pexpect.popen_spawn import PopenSpawn
 from pexpect import EOF
+import logging
+log = logging.getLogger("pexpect_wrapper")
 
 
 class PExpectWrapper:
@@ -17,12 +19,16 @@ class PExpectWrapper:
     def expect(self, message):
         assert self.child is not None
 
-        output = ''
-        while output == '':
-            assert len(self.output) > 0, 'expected an output line'
-            output = self.output.pop(0)
+        found = ''
+        while len(self.output) > 0:
+            next_line = self.output.pop(0)
+            log.debug('looking for "{}" in "{}"'.format(message, next_line))
+            if message in next_line:
+                found = next_line
+                break
 
-        assert message in output, 'expected {} in {}'.format(message, output)
+        assert found != '', 'expected {} in output'.format(message)
+
 
     def expect_eof(self):
         assert self.child is not None
