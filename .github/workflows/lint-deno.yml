@@ -13,4 +13,4 @@ jobs:
         with:
           deno-version: v1.x
       - name: Lint source
-        run: deno fmt --check mod.ts tests
+        run: deno fmt --check mod.ts deps.ts src/ tests/

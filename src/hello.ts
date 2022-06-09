@@ -1,5 +1,4 @@
-import { log } from "../deps.ts";
-import { denoLib, rustLib } from "../deps.ts";
+import { denoLib, log, rustLib } from "../deps.ts";
 
 /**
  * Logs out some greetings.

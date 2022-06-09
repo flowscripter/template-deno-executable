@@ -9,12 +9,18 @@
 
 > Project template for a Deno executable.
 
-## Usage
+## Project Template Usage
 
 1. Use as a
    [template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
    to create a new repository.
 2. Update links and references in `README.md`.
+
+## Binary Executable Usage
+
+Download and extract zip from: https://github.com/flowscripter/template-deno-executable/releases
+
+Run the executable: `./template-deno-executable`
 
 ## Development
 
@@ -22,7 +28,7 @@ Run: `deno run --unstable --allow-env --allow-read --allow-write --allow-ffi --a
 
 Test: `deno test -A --unstable`
 
-Lint: `deno fmt`
+Lint: `deno fmt mod.ts deps.ts src/ tests/`
 
 Compile: `deno compile --unstable --allow-env --allow-read --allow-write --allow-ffi --allow-net mod.ts`
 
@@ -36,7 +42,7 @@ Refer to [functional_tests/README.md](functional_tests/README.md)
 
 PNG image generated from `images/uml_diagram.mermaid`:
 
-![UML Diagram](images/uml_diagram.png "UML Diagram")
+![UML Diagram](https://raw.githubusercontent.com/flowscripter/template-deno-executable/main/images/uml_diagram.png "UML Diagram")
 
 ### API
 
