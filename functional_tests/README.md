@@ -19,4 +19,4 @@ Run the functional tests:
 
 To run with logging output from the test steps (this is the best set of arguments I can find):
 
-    behave --no-logcapture --no-color --logging-level=DEBUG 
+    behave --no-logcapture --no-color --logging-level=DEBUG
