@@ -1,4 +1,4 @@
-name: lint-deno
+name: format-deno-code
 on:
   pull_request:
     branches: [main]
@@ -8,9 +8,9 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
-      - name: Setup Deno
+      - name: Install Deno
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-      - name: Lint source
+      - name: Format source
         run: deno fmt --check mod.ts deps.ts src/ tests/
