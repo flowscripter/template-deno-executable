@@ -20,7 +20,7 @@ jobs:
           udd tests/test_deps.ts --test="deno test -A --unstable"
       - name: Create PR
         id: create-pr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.CREATE_PR_TOKEN }}
           commit-message: 'chore: update dependencies'
