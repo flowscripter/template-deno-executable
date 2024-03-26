@@ -4,7 +4,7 @@
 
 Ensure the executable is built:
 
-    deno compile --unstable --allow-env --allow-read --allow-write --allow-ffi --allow-net --output /tmp/template-deno-executable ../mod.ts
+    deno compile --unstable-ffi --allow-env --allow-read --allow-write --allow-ffi --allow-net --output /tmp/template-deno-executable ../mod.ts
 
 Install requirements:
 

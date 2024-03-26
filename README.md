@@ -24,13 +24,13 @@ Run the executable: `./template-deno-executable`
 
 ## Development
 
-Run: `deno run --unstable --allow-env --allow-read --allow-write --allow-ffi --allow-net mod.ts`
+Run: `deno run --unstable-ffi --allow-env --allow-read --allow-write --allow-ffi --allow-net mod.ts`
 
-Test: `deno test -A --unstable`
+Test: `deno test -A --unstable-ffi --allow-ffi`
 
 Lint: `deno fmt mod.ts deps.ts src/ tests/`
 
-Compile: `deno compile --unstable --allow-env --allow-read --allow-write --allow-ffi --allow-net mod.ts`
+Compile: `deno compile --unstable-ffi --allow-env --allow-read --allow-write --allow-ffi --allow-net mod.ts`
 
 ## Functional Tests
 

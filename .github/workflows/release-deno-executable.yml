@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Test Deno
         uses: flowscripter/.github/actions/run-deno-tests@v1
+        with:
+          codecov-token: ${{ secrets.CODECOV_TOKEN }}
   test-deno-executable:
     runs-on: ${{ matrix.os }}
     needs:
